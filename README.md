@@ -254,4 +254,27 @@ app.start("0.0.0.0", 80, True)
 ```
 
 ### Doing things before and after requests.
-WIP
+This function executes before or after a request is recieved and processed.  
+
+Exaple: 
+```python
+from WebApp import WebApp
+
+app = WebApp()
+
+@app.before_request
+def before():
+    print("Request gotten")
+
+
+@app.get("/")
+def index():
+  return f"<h1>Hello, world.</h1>"
+  
+@app.after_request
+def after():
+  print("Request processed.")
+  
+app.start("0.0.0.0", 80, True)
+
+```
